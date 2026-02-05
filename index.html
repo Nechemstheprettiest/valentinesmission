@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valentine’s Day Mission 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    .heart {
+      position: relative;
+      width: 360px;
+      height: 360px;
+      background: #ff4d6d;
+      transform: rotate(-45deg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      animation: pulse 1.5s infinite;
+      z-index: 1;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      background: #ff4d6d;
+      border-radius: 50%;
+      z-index: -1; /* 👈 pushes heart shapes behind text */
+    }
+
+    .heart::before {
+      top: -180px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 180px;
+      top: 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: rotate(-45deg) scale(1); }
+      50% { transform: rotate(-45deg) scale(1.04); }
+      100% { transform: rotate(-45deg) scale(1); }
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 260px;
+      padding: 30px;
+      text-align: center;
+      color: white;
+      box-sizing: border-box;
+      z-index: 2; /* 👈 guarantees text stays on top */
+    }
+
+    h1 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .buttons button {
+      background: white;
+      color: #ff4d6d;
+      border: none;
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .buttons button:hover {
+      transform: scale(1.06);
+      background: #ffe5ec;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart">
+    <div class="content" id="mainContent">
+      <h1>Hey there my pretty Chemmy!!! 💕</h1>
+      <p>
+        Your trail is starting! Now, I hope you’re staying safe.
+        Today, your mission will be to find sticky notes and follow the instructions.
+        Are you ready?
+      </p>
+      <div class="buttons">
+        <button onclick="startMission()">Yes</button>
+        <button onclick="startMission()">Absolutely</button>
+      </div>
+    </div>
+
+    <div class="content hidden" id="nextContent">
+      <h1>Good luck 🍀</h1>
+      <p>And have fun!!! 💖</p>
+    </div>
+  </div>
+
+  <script>
+    function startMission() {
+      document.getElementById("mainContent").classList.add("hidden");
+      document.getElementById("nextContent").classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>
